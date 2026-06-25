@@ -22,7 +22,6 @@ import {
   ExternalLink,
   ChevronRight
 } from 'lucide-react';
-import { motion } from 'motion/react';
 
 const Navbar = () => {
   return (
@@ -62,11 +61,7 @@ const Hero = () => {
       <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:40px_40px] [mask-image:radial-gradient(ellipse_at_center,black,transparent)]"></div>
 
       <div className="max-w-7xl mx-auto px-6 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="animate-fade-up">
           <div className="inline-flex items-center gap-2 bg-cad-accent/10 border border-cad-accent/20 px-4 py-1.5 rounded-full mb-8">
             <span className="w-2 h-2 rounded-full bg-cad-accent animate-pulse"></span>
             <span className="text-[10px] font-bold uppercase tracking-widest text-cad-accent">Revolutionizing Infrastructure Design</span>
@@ -89,14 +84,9 @@ const Hero = () => {
               Post a Project
             </button>
           </div>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="mt-20 relative px-4"
-        >
+        <div className="animate-fade-scale mt-20 relative px-4">
           <div className="glass-panel p-2 rounded-[2.5rem] bg-gradient-to-br from-white/10 to-transparent border border-white/20 shadow-premium overflow-hidden">
              <div className="rounded-[2rem] overflow-hidden bg-cad-dark aspect-video flex items-center justify-center border border-white/5 relative group">
                 <div className="absolute inset-0 bg-gradient-to-t from-cad-dark via-transparent to-transparent opacity-60"></div>
@@ -122,7 +112,7 @@ const Hero = () => {
           {/* Decorative element */}
           <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-cad-accent rounded-full blur-[60px] opacity-20"></div>
           <div className="absolute -top-6 -left-6 w-32 h-32 bg-blue-500 rounded-full blur-[60px] opacity-20"></div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
@@ -489,8 +479,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 pt-10 border-t border-white/5 text-[10px] font-bold text-cad-muted uppercase tracking-[0.2em]">
           <div>© 2026 DesignLynk Inc. All rights reserved.</div>
           <div className="flex gap-8">
-            <span>Powered by Gemini 2.0</span>
-            <span>Design Studio v4.1</span>
+            
           </div>
         </div>
       </div>
