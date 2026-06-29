@@ -86,33 +86,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="animate-fade-scale mt-20 relative px-4">
-          <div className="glass-panel p-2 rounded-[2.5rem] bg-gradient-to-br from-white/10 to-transparent border border-white/20 shadow-premium overflow-hidden">
-             <div className="rounded-[2rem] overflow-hidden bg-cad-dark aspect-video flex items-center justify-center border border-white/5 relative group">
-                <div className="absolute inset-0 bg-gradient-to-t from-cad-dark via-transparent to-transparent opacity-60"></div>
-                {/* Simulated App UI */}
-                <div className="absolute inset-0 flex flex-col p-8 opacity-40 group-hover:opacity-60 transition-opacity">
-                    <div className="h-4 w-32 bg-cad-accent/20 rounded mb-8"></div>
-                    <div className="grid grid-cols-3 gap-6">
-                        <div className="h-32 bg-white/5 rounded-2xl border border-white/10"></div>
-                        <div className="h-32 bg-white/5 rounded-2xl border border-white/10"></div>
-                        <div className="h-32 bg-cad-accent/20 rounded-2xl border border-cad-accent/20"></div>
-                    </div>
-                    <div className="mt-8 flex-1 bg-white/5 rounded-2xl border border-white/10"></div>
-                </div>
-                <div className="relative z-10 flex flex-col items-center">
-                    <div className="w-20 h-20 bg-cad-accent rounded-full flex items-center justify-center shadow-glow-accent cursor-pointer hover:scale-110 transition-transform">
-                        <Zap className="w-10 h-10 text-cad-dark fill-current" />
-                    </div>
-                    <span className="mt-4 text-sm font-bold tracking-widest uppercase text-cad-muted">Experience the Studio</span>
-                </div>
-             </div>
-          </div>
-          
-          {/* Decorative element */}
-          <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-cad-accent rounded-full blur-[60px] opacity-20"></div>
-          <div className="absolute -top-6 -left-6 w-32 h-32 bg-blue-500 rounded-full blur-[60px] opacity-20"></div>
-        </div>
+        
       </div>
     </section>
   );
@@ -266,10 +240,10 @@ const HowItWorks = () => {
   );
 };
 
-const FeatureCard = ({ title, desc, icon: Icon, color, accentColor }: any) => (
+const FeatureCard = ({ title, desc, icon: Icon, color, accentColor, comingSoon }: any) => (
     <div className={`glass-panel p-8 rounded-3xl group border-white/5 hover:border-${color}-500/30 transition-all duration-500 overflow-hidden relative h-full`}>
         <div className={`absolute -right-10 -top-10 w-40 h-40 bg-${color}-500/5 rounded-full blur-3xl pointer-events-none group-hover:opacity-100 opacity-60 transition-opacity`}></div>
-        
+
         <div className="relative z-10 flex flex-col h-full justify-between">
             <div>
                 <div className={`w-12 h-12 rounded-xl bg-${color}-500/20 border border-${color}-500/30 flex items-center justify-center text-${color}-400 mb-6 shadow-glow`}>
@@ -278,10 +252,16 @@ const FeatureCard = ({ title, desc, icon: Icon, color, accentColor }: any) => (
                 <h3 className={`text-2xl font-bold mb-4 group-hover:text-${color}-400 transition-colors`}>{title}</h3>
                 <p className="text-cad-muted leading-relaxed text-sm mb-8">{desc}</p>
             </div>
-            
-            <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-cad-muted group-hover:text-white transition-colors cursor-pointer group/btn">
-                Learn More <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-            </div>
+
+            {comingSoon ? (
+                <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-cad-muted cursor-default">
+                    Coming Soon
+                </div>
+            ) : (
+                <div className="flex items-center gap-2 text-xs font-bold tracking-widest uppercase text-cad-muted group-hover:text-white transition-colors cursor-pointer group/btn">
+                    Learn More <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
+                </div>
+            )}
         </div>
     </div>
 );
@@ -319,11 +299,12 @@ const PlatformFeatures = () => {
                         icon={ShieldCheck}
                         color="emerald"
                     />
-                    <FeatureCard 
-                        title="Academy" 
+                    <FeatureCard
+                        title="Academy"
                         desc="Upskill with professional-led courses on BIM, Revit, and sustainable design."
                         icon={GraduationCap}
                         color="amber"
+                        comingSoon
                     />
                 </div>
             </div>
@@ -394,7 +375,7 @@ const CTASection = () => {
           <div className="absolute -bottom-24 -right-20 w-64 h-64 bg-blue-500/20 rounded-full blur-[100px]"></div>
           
           <div className="relative z-10">
-            <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter">Ready to redesign <br />the world?</h2>
+            {/* <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter">Ready to redesign <br />the world?</h2> */}
             <p className="text-xl text-cad-muted mb-12 max-w-2xl mx-auto font-light">
               Join thousands of professionals and organizations building safer, faster infrastructure today.
             </p>
