@@ -23,6 +23,12 @@ import {
   ChevronRight
 } from 'lucide-react';
 
+// The web app lives on its own subdomain; every CTA deep-links there.
+// ?signup=designer / ?signup=client opens the app's signup form with the role preselected.
+const APP_URL = 'https://app.designlynk.co.za';
+const SIGNUP_DESIGNER = `${APP_URL}/?signup=designer`;
+const SIGNUP_CLIENT = `${APP_URL}/?signup=client`;
+
 const Navbar = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 flex justify-center p-6">
@@ -37,15 +43,14 @@ const Navbar = () => {
         <div className="hidden md:flex items-center gap-8 text-sm font-medium text-cad-muted">
           <a href="#features" className="hover:text-cad-accent transition-colors">Features</a>
           <a href="#how-it-works" className="hover:text-cad-accent transition-colors">How it works</a>
-          <a href="#academy" className="hover:text-cad-accent transition-colors">Academy</a>
-          <a href="#pricing" className="hover:text-cad-accent transition-colors">Pricing</a>
+          <a href="#features" className="hover:text-cad-accent transition-colors">Academy</a>
         </div>
 
         <div className="flex items-center gap-4">
-          <button className="text-sm font-bold text-cad-text hover:text-cad-accent transition-colors">Login</button>
-          <button className="bg-cad-accent text-cad-dark px-5 py-2 rounded-full text-sm font-bold shadow-glow-accent hover:bg-violet-400 transition-all active:scale-95">
+          <a href={APP_URL} className="text-sm font-bold text-cad-text hover:text-cad-accent transition-colors">Login</a>
+          <a href={SIGNUP_DESIGNER} className="bg-cad-accent text-cad-dark px-5 py-2 rounded-full text-sm font-bold shadow-glow-accent hover:bg-violet-400 transition-all active:scale-95">
             Get Started
-          </button>
+          </a>
         </div>
       </div>
     </nav>
@@ -73,16 +78,16 @@ const Hero = () => {
           </h1>
           
           <p className="text-lg md:text-xl text-cad-muted max-w-2xl mx-auto mb-12">
-            The world's first AI-powered marketplace for CAD designers, engineers, and architects. Fast, secure, and built for disaster recovery infrastructure.
+            The AI-powered marketplace for CAD designers, engineers, and architects. Fast, secure, and built for the infrastructure that matters.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="w-full sm:w-auto bg-cad-accent text-cad-dark px-8 py-4 rounded-2xl font-bold text-lg shadow-glow-accent hover:bg-violet-400 transition-all flex items-center justify-center gap-3 group">
+            <a href={SIGNUP_DESIGNER} className="w-full sm:w-auto bg-cad-accent text-cad-dark px-8 py-4 rounded-2xl font-bold text-lg shadow-glow-accent hover:bg-violet-400 transition-all flex items-center justify-center gap-3 group">
               Join as Freelancer <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </button>
-            <button className="w-full sm:w-auto glass-panel px-8 py-4 rounded-2xl font-bold text-lg hover:border-cad-accent/50 transition-all flex items-center justify-center gap-3">
+            </a>
+            <a href={SIGNUP_CLIENT} className="w-full sm:w-auto glass-panel px-8 py-4 rounded-2xl font-bold text-lg hover:border-cad-accent/50 transition-all flex items-center justify-center gap-3">
               Post a Project
-            </button>
+            </a>
           </div>
         </div>
 
@@ -136,8 +141,8 @@ const SolutionSection = () => {
               <span className="text-[10px] font-bold uppercase tracking-widest text-green-500">The DesignLynk Advantage</span>
             </div>
             <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">Fast, Reliable & Impact-Driven</h2>
-            <p className="text-lg text-cad-muted mb-10 leading-relaxed italic">
-              "We've cut infrastructure design time by 75% for NGOs working in disaster zones."
+            <p className="text-lg text-cad-muted mb-10 leading-relaxed">
+              Our mission: cut infrastructure design time by 75% for the communities and organizations that need it most.
             </p>
             
             <div className="space-y-6">
@@ -293,9 +298,9 @@ const PlatformFeatures = () => {
                         icon={Box}
                         color="blue"
                     />
-                    <FeatureCard 
-                        title="Storage" 
-                        desc="Military-grade encryption for your intellectual property and heavy CAD files."
+                    <FeatureCard
+                        title="Storage"
+                        desc="Your intellectual property and heavy CAD files, encrypted in transit and at rest."
                         icon={ShieldCheck}
                         color="emerald"
                     />
@@ -326,16 +331,16 @@ const ValueSection = () => {
                 Turn your technical expertise into a thriving professional career. Whether you're a student or a veteran Engineer.
               </p>
               <ul className="space-y-5 mb-12">
-                {["Global job opportunities", "Guaranteed payments via Escrow", "Build a verified portfolio", "Access to training courses"].map((t, i) => (
+                {["Global job opportunities", "Guaranteed payments via Escrow", "Build a verified portfolio", "Message clients directly"].map((t, i) => (
                     <li key={i} className="flex items-center gap-3 text-sm font-medium">
                         <CheckCircle2 className="w-5 h-5 text-cad-accent" />
                         {t}
                     </li>
                 ))}
               </ul>
-              <button className="glass-panel px-8 py-4 rounded-2xl font-bold w-full md:w-auto hover:bg-cad-accent hover:text-cad-dark transition-all duration-500">
+              <a href={SIGNUP_DESIGNER} className="inline-block text-center glass-panel px-8 py-4 rounded-2xl font-bold w-full md:w-auto hover:bg-cad-accent hover:text-cad-dark transition-all duration-500">
                 Register as Designer
-              </button>
+              </a>
             </div>
           </div>
 
@@ -355,9 +360,9 @@ const ValueSection = () => {
                     </li>
                 ))}
               </ul>
-              <button className="glass-panel px-8 py-4 rounded-2xl font-bold w-full md:w-auto hover:bg-blue-500 hover:text-cad-dark transition-all duration-500">
+              <a href={SIGNUP_CLIENT} className="inline-block text-center glass-panel px-8 py-4 rounded-2xl font-bold w-full md:w-auto hover:bg-blue-500 hover:text-cad-dark transition-all duration-500">
                 Hire a Specialist
-              </button>
+              </a>
             </div>
           </div>
         </div>
@@ -375,24 +380,24 @@ const CTASection = () => {
           <div className="absolute -bottom-24 -right-20 w-64 h-64 bg-blue-500/20 rounded-full blur-[100px]"></div>
           
           <div className="relative z-10">
-            {/* <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter">Ready to redesign <br />the world?</h2> */}
+            <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tighter">Ready to build faster?</h2>
             <p className="text-xl text-cad-muted mb-12 max-w-2xl mx-auto font-light">
-              Join thousands of professionals and organizations building safer, faster infrastructure today.
+              Be among the first designers and businesses building safer, faster infrastructure on DesignLynk.
             </p>
-            
+
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-              <button className="w-full sm:w-auto bg-cad-accent text-cad-dark px-10 py-5 rounded-2xl font-bold text-xl shadow-glow-accent hover:bg-violet-400 transition-all flex items-center justify-center gap-3 active:scale-95">
-                Start My Application <ChevronRight className="w-6 h-6" />
-              </button>
-              <button className="w-full sm:w-auto glass-panel px-10 py-5 rounded-2xl font-bold text-xl hover:bg-white/5 transition-all">
+              <a href={SIGNUP_DESIGNER} className="w-full sm:w-auto bg-cad-accent text-cad-dark px-10 py-5 rounded-2xl font-bold text-xl shadow-glow-accent hover:bg-violet-400 transition-all flex items-center justify-center gap-3 active:scale-95">
+                Create Free Account <ChevronRight className="w-6 h-6" />
+              </a>
+              <a href={SIGNUP_CLIENT} className="w-full sm:w-auto glass-panel px-10 py-5 rounded-2xl font-bold text-xl hover:bg-white/5 transition-all text-center">
                 Post a Job
-              </button>
+              </a>
             </div>
-            
+
             <div className="mt-12 flex items-center justify-center gap-8 text-[10px] font-bold text-cad-muted uppercase tracking-[0.2em]">
                 <div className="flex items-center gap-2"><Globe className="w-4 h-4" /> Global Talent</div>
                 <div className="flex items-center gap-2"><ShieldCheck className="w-4 h-4" /> Secure Escrow</div>
-                <div className="flex items-center gap-2"><Clock className="w-4 h-4" /> 24/7 Support</div>
+                <div className="flex items-center gap-2"><Clock className="w-4 h-4" /> Fast Delivery</div>
             </div>
           </div>
         </div>
@@ -421,7 +426,7 @@ const Footer = () => {
           <div>
             <h4 className="font-bold text-sm uppercase tracking-widest mb-6">Platform</h4>
             <ul className="space-y-4 text-sm text-cad-muted font-medium">
-              <li><a href="#" className="hover:text-cad-accent transition-colors">Marketplace</a></li>
+              <li><a href={APP_URL} className="hover:text-cad-accent transition-colors">Marketplace</a></li>
               <li><a href="#" className="hover:text-cad-accent transition-colors">Collaboration</a></li>
               <li><a href="#" className="hover:text-cad-accent transition-colors">Academy</a></li>
               <li><a href="#" className="hover:text-cad-accent transition-colors">Storage</a></li>
