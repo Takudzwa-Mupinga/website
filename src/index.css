@@ -4,17 +4,19 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
 
-  --color-cad-accent: #8b5cf6;
-  --color-cad-dark: #09090b;
-  --color-cad-panel: rgba(18, 18, 20, 0.8);
-  --color-cad-border: rgba(255, 255, 255, 0.1);
-  --color-cad-text: #ffffff;
-  --color-cad-muted: #94a3b8;
-  --color-cad-success: #10b981;
+  /* Light theme. `cad-dark` keeps its name for class compatibility, but is now
+     the light app background; `cad-text` is the dark ink. */
+  --color-cad-accent: #7c3aed;
+  --color-cad-dark: #f6f7fb;
+  --color-cad-panel: rgba(255, 255, 255, 0.72);
+  --color-cad-border: rgba(15, 23, 42, 0.10);
+  --color-cad-text: #0f172a;
+  --color-cad-muted: #64748b;
+  --color-cad-success: #059669;
 
-  --shadow-glow: 0 0 15px rgba(139, 92, 246, 0.3);
-  --shadow-glow-accent: 0 0 25px rgba(139, 92, 246, 0.5);
-  --shadow-premium: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 15px rgba(124, 58, 237, 0.25);
+  --shadow-glow-accent: 0 12px 30px -10px rgba(124, 58, 237, 0.45);
+  --shadow-premium: 0 25px 50px -12px rgba(15, 23, 42, 0.15);
 }
 
 @layer base {
@@ -23,12 +25,17 @@
   }
 }
 
-.glass-panel {
-  @apply backdrop-blur-xl bg-cad-panel border border-cad-border;
-}
+/* In @layer components so hover/utility classes (e.g. hover:bg-cad-accent) can
+   override these. Unlayered styles beat all Tailwind utilities in v4, which made
+   button hovers do nothing (the bg stayed panel-white). */
+@layer components {
+  .glass-panel {
+    @apply backdrop-blur-xl bg-cad-panel border border-cad-border shadow-sm;
+  }
 
-.glass-card {
-  @apply backdrop-blur-md bg-white/[0.03] border border-cad-border;
+  .glass-card {
+    @apply backdrop-blur-md bg-white/80 border border-cad-border shadow-sm;
+  }
 }
 
 .custom-scrollbar::-webkit-scrollbar {
