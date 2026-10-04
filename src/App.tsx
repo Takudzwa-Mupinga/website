@@ -85,6 +85,15 @@ const Hero = () => {
               Post a Project
             </a>
           </div>
+
+          <p className="text-xs text-cad-muted mt-5">
+            By creating an account, you agree to our{' '}
+            <a href="/legal/terms-and-conditions.html" target="_blank" rel="noreferrer" className="text-cad-accent hover:underline">Terms</a>
+            {' '}and{' '}
+            <a href="/legal/community-guidelines.html" target="_blank" rel="noreferrer" className="text-cad-accent hover:underline">Community Guidelines</a>
+            , and acknowledge our{' '}
+            <a href="/legal/privacy-policy.html" target="_blank" rel="noreferrer" className="text-cad-accent hover:underline">Privacy Policy</a>.
+          </p>
         </div>
 
         
@@ -451,7 +460,8 @@ const Footer = () => {
             <ul className="space-y-4 text-sm text-cad-muted font-medium">
               <li><a href="/legal/privacy-policy.html" target="_blank" rel="noreferrer" className="hover:text-cad-accent transition-colors">Privacy Policy</a></li>
               <li><a href="/legal/terms-and-conditions.html" target="_blank" rel="noreferrer" className="hover:text-cad-accent transition-colors">Terms of Service</a></li>
-              <li><a href="/legal/privacy-policy.html" target="_blank" rel="noreferrer" className="hover:text-cad-accent transition-colors">Cookie Policy</a></li>
+              <li><a href="/legal/community-guidelines.html" target="_blank" rel="noreferrer" className="hover:text-cad-accent transition-colors">Community Guidelines</a></li>
+              <li><a href="/legal/paia-manual.html" target="_blank" rel="noreferrer" className="hover:text-cad-accent transition-colors">PAIA Manual</a></li>
             </ul>
           </div>
 

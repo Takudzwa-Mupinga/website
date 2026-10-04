@@ -6,3 +6,6 @@ coverage/
 *.log
 .env*
 !.env.example
+
+# Legal source documents (.docx) — internal, never publish to the repo
+legal-source/
